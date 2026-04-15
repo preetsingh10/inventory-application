@@ -10,7 +10,13 @@ async function getAllItems(){
     return data.rows
 }
 
+async function getCategoryItemsFromDb(categoryId){
+    const data = await pool.query("SELECT * FROM items WHERE category_id = ($1)", [categoryId])
+    return data.rows
+}
+
 module.exports = {
     getAllCategories,
-    getAllItems
+    getAllItems,
+    getCategoryItemsFromDb
 }
