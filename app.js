@@ -1,9 +1,16 @@
-const express = require('express')
-const app = new express()
-const PORT = 6969
-app.get('/', (req,res)=>{
-    res.send("hello world")
-})
+const express = require("express");
+const app = new express();
+const PORT = 6969;
 
-app.listen(PORT)
-console.log("the app is running on port: ", PORT)
+const { getIndex } = require("./controllers/inventoryController");
+
+app.set("view engine", "ejs");
+
+// Middleware to parse URL-encoded bodies (e.g., from HTML forms)
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/", getIndex);
+
+app.listen(PORT, () => {
+  console.log("the app is running on port: ", PORT);
+});
