@@ -9,6 +9,8 @@ app.set("view engine", "ejs");
 // Middleware to parse URL-encoded bodies (e.g., from HTML forms)
 app.use(express.urlencoded({ extended: true }));
 
+// css static files
+app.use(express.static('public'))
 app.get("/", getIndex);
 
 // category request handler
