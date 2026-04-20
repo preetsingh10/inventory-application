@@ -9,12 +9,18 @@
 </head>
 
 <body>
-  <h2 >Items</h2>
-  <ul>
-    <% items.forEach(item=>{ %>
-    <li> Name: <%=item.name%> Price: $<%=item.price%> Quantity: <%=item.quantity%>pcs</li>
-    <%})%>
-  </ul>
+  <h2>Items</h2>
+<% if (items.length === 0) { %>
+  <h1>No items in this category</h1>
+<% } else { %>
+  <% items.forEach(item => { %>
+    <p>
+      Name: <%= item.name %>
+      Price: $<%= item.price %>
+      Quantity: <%= item.quantity %> pcs
+    </p>
+  <% }) %>
+<% } %>
 </body>
 
 </html>
