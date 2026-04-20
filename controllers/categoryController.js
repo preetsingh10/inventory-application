@@ -6,5 +6,5 @@ async function getCategoryItems(req, res) {
 }
 
 module.exports = {
-    getCategoryItems
-}
+  getCategoryItems,
+};
