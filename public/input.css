@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../views/";
 @theme {
   /* color is emerald from tailwind color pallets on their website. */
   --color-primary: oklch(69.6% 0.17 162.48);

@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<% if(items.length === 0 ) { %>
+<h1 class="bg-yellow-300">No items in this Category</h1>
+<%} else { %>
+<table class=" mt-3 ml-1 mr-1 w-dvw  table-auto border border-primary  overflow-scroll">
+  <thead>
+    <tr>
+      <th class=" text-start">Name</th>
+      <th class=" text-start">Price</th>
+      <th class=" text-start">Quantity</th>
+    </tr>
+  </thead>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/output.css">
-  <title>Items</title>
-</head>
+  <tbody>
 
-<body>
-  <h2>Items</h2>
-<% if (items.length === 0) { %>
-  <h1>No items in this category</h1>
-<% } else { %>
-  <% items.forEach(item => { %>
-    <p>
-      Name: <%= item.name %>
-      Price: $<%= item.price %>
-      Quantity: <%= item.quantity %> pcs
-    </p>
-  <% }) %>
-<% } %>
-</body>
-
-</html>
+    <% items.forEach(item=>{ %>
+    <tr class="  border border-primary rounded-2xl">
+      <td class="p-1 pl-0" ><%= item.name %></td>
+      <td class="p-1 pl-0" >$<%= item.price %></td>
+      <td class="p-1 pl-0"><%= item.quantity %> pcs</td>
+    </tr>
+    <% }) %>
+    <%}%>
+</tbody>
+</table>
