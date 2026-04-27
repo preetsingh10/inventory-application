@@ -29,9 +29,16 @@ function closeMenu() {
 // small screen functions
 
 function editButtonForSmallScreen() {
-  closeMenu()
+  closeMenu();
   const editForm = document.getElementById("edit-form-for-small-screen");
+  const editFormOverlay = document.getElementById("sm:edit-form-overlay");
+  editFormOverlay.classList.remove("hidden");
+  editForm.classList.remove("translate-y-full");
+}
+function closeEditMenu() {
+ const editForm = document.getElementById("edit-form-for-small-screen");
+  const editFormOverlay = document.getElementById("sm:edit-form-overlay");
+  editFormOverlay.classList.add("hidden");
+  editForm.classList.add("translate-y-full");
 
-  editForm.classList.remove("translate-y-full")
-  console.log('done')
 }
