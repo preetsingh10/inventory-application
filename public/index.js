@@ -32,12 +32,16 @@ function editButtonForSmallScreen() {
   closeMenu();
   const editForm = document.getElementById("edit-form-for-small-screen");
   const editFormOverlay = document.getElementById("sm:edit-form-overlay");
+  const editButton = document.getElementById('sm:editButton')
+  editButton.classList.add("hidden")
   editFormOverlay.classList.remove("hidden");
   editForm.classList.remove("translate-y-full");
 }
 function closeEditMenu() {
  const editForm = document.getElementById("edit-form-for-small-screen");
   const editFormOverlay = document.getElementById("sm:edit-form-overlay");
+   const editButton = document.getElementById('sm:editButton')
+  editButton.classList.remove("hidden")
   editFormOverlay.classList.add("hidden");
   editForm.classList.add("translate-y-full");
 
