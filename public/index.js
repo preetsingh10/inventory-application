@@ -46,3 +46,10 @@ function closeEditMenu() {
   editForm.classList.add("translate-y-full");
 
 }
+function addCategoryFormSmall(){
+   const editForm = document.getElementById("edit-form-for-small-screen");
+   editForm.classList.add('hidden')
+   const addCategoryForm = document.getElementById('sm:addCategoryForm')
+   addCategoryForm.classList.remove('translate-y-full')
+
+}
