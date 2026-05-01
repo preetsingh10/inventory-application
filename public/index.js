@@ -26,30 +26,42 @@ function closeMenu() {
   document.getElementById("drawer").classList.add("-translate-x-full");
 }
 
-// small screen functions
+// *********************************** Small Screen Functions ********************************************************
 
+// -- global variables pointing to small screen forms and elements
+
+const editForm = document.getElementById("edit-form-for-small-screen");
+const editFormOverlay = document.getElementById("sm:edit-form-overlay");
+const editButton = document.getElementById("sm:editButton");
+const addCategoryForm = document.getElementById("sm:addCategoryForm");
+const addItemForm = document.getElementById("sm:addItemForm");
+
+
+function closeAllMenusForSmallScreens(){
+  editForm.classList.add('translate-y-full')
+  addCategoryForm.classList.add('translate-y-full')
+  addItemForm.classList.add('translate-y-full')
+  editFormOverlay.classList.add('hidden')
+
+  // make the edit button visible again
+  editButton.classList.remove('hidden')
+}
 function editButtonForSmallScreen() {
   closeMenu();
-  const editForm = document.getElementById("edit-form-for-small-screen");
-  const editFormOverlay = document.getElementById("sm:edit-form-overlay");
-  const editButton = document.getElementById('sm:editButton')
-  editButton.classList.add("hidden")
+  editButton.classList.add("hidden");
   editFormOverlay.classList.remove("hidden");
   editForm.classList.remove("translate-y-full");
 }
 function closeEditMenu() {
- const editForm = document.getElementById("edit-form-for-small-screen");
-  const editFormOverlay = document.getElementById("sm:edit-form-overlay");
-   const editButton = document.getElementById('sm:editButton')
-  editButton.classList.remove("hidden")
+  editButton.classList.remove("hidden");
   editFormOverlay.classList.add("hidden");
   editForm.classList.add("translate-y-full");
-
 }
-function addCategoryFormSmall(){
-   const editForm = document.getElementById("edit-form-for-small-screen");
-   editForm.classList.add('hidden')
-   const addCategoryForm = document.getElementById('sm:addCategoryForm')
-   addCategoryForm.classList.remove('translate-y-full')
-
+function addCategoryFormSmall() {
+  editForm.classList.add("translate-y-full");
+  addCategoryForm.classList.remove("translate-y-full");
+}
+function openAddItemFormSmall() {
+  closeEditMenu();
+  addItemForm.classList.remove("translate-y-full");
 }
