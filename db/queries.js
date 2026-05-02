@@ -20,9 +20,16 @@ async function getCategoryItemsFromDb(categoryId) {
 async function addCategoryToDb(categoryName) {
   await pool.query("INSERT INTO categories(name) VALUES($1)", [categoryName]);
 }
+async function addItemInDb(itemName, itemPrice, itemQuantity, categoryId) {
+  await pool.query(
+    "INSERT INTO items( name, price, quantity, category_id)  VALUES($1,$2,$3,$4)",
+    [itemName, itemPrice, itemQuantity, categoryId],
+  );
+}
 module.exports = {
   getAllCategories,
   getAllItems,
   getCategoryItemsFromDb,
   addCategoryToDb,
+  addItemInDb,
 };

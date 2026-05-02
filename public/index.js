@@ -36,15 +36,14 @@ const editButton = document.getElementById("sm:editButton");
 const addCategoryForm = document.getElementById("sm:addCategoryForm");
 const addItemForm = document.getElementById("sm:addItemForm");
 
-
-function closeAllMenusForSmallScreens(){
-  editForm.classList.add('translate-y-full')
-  addCategoryForm.classList.add('translate-y-full')
-  addItemForm.classList.add('translate-y-full')
-  editFormOverlay.classList.add('hidden')
+function closeAllMenusForSmallScreens() {
+  editForm.classList.add("translate-y-full");
+  addCategoryForm.classList.add("translate-y-full");
+  addItemForm.classList.add("translate-y-full");
+  editFormOverlay.classList.add("hidden");
 
   // make the edit button visible again
-  editButton.classList.remove('hidden')
+  editButton.classList.remove("hidden");
 }
 function editButtonForSmallScreen() {
   closeMenu();
@@ -58,10 +57,14 @@ function closeEditMenu() {
   editForm.classList.add("translate-y-full");
 }
 function addCategoryFormSmall() {
-  editForm.classList.add("translate-y-full");
+  closeAllMenusForSmallScreens();
+  editFormOverlay.classList.remove("hidden");
+  editButton.classList.add("hidden");
   addCategoryForm.classList.remove("translate-y-full");
 }
 function openAddItemFormSmall() {
-  closeEditMenu();
+  closeAllMenusForSmallScreens();
+  editFormOverlay.classList.remove("hidden");
+  editButton.classList.add("hidden");
   addItemForm.classList.remove("translate-y-full");
 }

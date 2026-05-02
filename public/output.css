@@ -12,14 +12,18 @@
     --color-amber-600: oklch(66.6% 0.179 58.318);
     --color-amber-900: oklch(41.4% 0.112 45.904);
     --color-yellow-300: oklch(90.5% 0.182 98.111);
+    --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-600: oklch(44.6% 0.03 256.802);
+    --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-3xs: 16rem;
+    --container-2xs: 18rem;
+    --container-sm: 24rem;
     --container-md: 28rem;
     --container-lg: 32rem;
     --container-2xl: 42rem;
@@ -234,6 +238,9 @@
   .top-4\/5 {
     top: calc(4 / 5 * 100%);
   }
+  .top-5\/12 {
+    top: calc(5 / 12 * 100%);
+  }
   .top-6\/12 {
     top: calc(6 / 12 * 100%);
   }
@@ -330,8 +337,14 @@
   .w-1 {
     width: calc(var(--spacing) * 1);
   }
+  .w-2 {
+    width: calc(var(--spacing) * 2);
+  }
   .w-2xl {
     width: var(--container-2xl);
+  }
+  .w-2xs {
+    width: var(--container-2xs);
   }
   .w-3 {
     width: calc(var(--spacing) * 3);
@@ -351,8 +364,26 @@
   .w-full {
     width: 100%;
   }
+  .w-md {
+    width: var(--container-md);
+  }
+  .w-sm {
+    width: var(--container-sm);
+  }
+  .max-w-fit {
+    max-width: fit-content;
+  }
   .max-w-md {
     max-width: var(--container-md);
+  }
+  .min-w-2 {
+    min-width: calc(var(--spacing) * 2);
+  }
+  .min-w-3 {
+    min-width: calc(var(--spacing) * 3);
+  }
+  .min-w-fit {
+    min-width: fit-content;
   }
   .table-auto {
     table-layout: auto;
@@ -395,6 +426,9 @@
   }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
@@ -680,6 +714,9 @@
   .text-gray-600 {
     color: var(--color-gray-600);
   }
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
   .text-primary-dark {
     color: var(--color-primary-dark);
   }
@@ -815,6 +852,11 @@
       }
     }
   }
+  .focus\:border-blue-500 {
+    &:focus {
+      border-color: var(--color-blue-500);
+    }
+  }
   .focus\:border-transparent {
     &:focus {
       border-color: transparent;
@@ -824,6 +866,11 @@
     &:focus {
       --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus\:ring-blue-500 {
+    &:focus {
+      --tw-ring-color: var(--color-blue-500);
     }
   }
   .focus\:ring-primary-dark {

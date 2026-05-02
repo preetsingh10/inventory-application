@@ -1,11 +1,36 @@
 <div id="sm:addItemForm" class="lg:hidden 
 z-60
-fixed top-8/12 left-0 p-1 w-full h-full 
+fixed top-5/12 left-0 p-1 w-full h-full 
 transform translate-y-full transition-transform duration-300 ease-in-out
 border-t-3 border-l-3 border-r-3  border-primary-dark rounded-t-3xl">
-<form action="">
-<label for="item">Item Name</label>
-<input type="text" name="item" id="item">
+  <div class="border-2 border-primary-dark rounded-full     w-16 m-auto mt-2"></div>
+  <form action="addItem" method="POST" class="mt-5 flex flex-col gap-2">
 
-</form>
+    <!--  Item Name -->
+    <label for="itemName" class="text-lg font-extrabold text-primary-dark">Item Name</label>
+    <input type="text" name="itemName" id="itemName" placeholder="Item name ..." class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-dark focus:border-transparent transition" />
+
+    <!-- Item Price -->
+    <label for="itemPrice" class="text-lg font-extrabold text-primary-dark">Price</label>
+    <div>
+      <input type="number" name="itemPrice" id="itemPrice" class="border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-2 max-w-fit focus:outline-none focus:ring-2 focus:ring-primary-dark focus:border-transparent transition">
+      <span class="text-primary-dark font-bold" >$</span>
+    </div>
+
+    <!-- Quantity -->
+    <label for="quantity" class="text-lg font-extrabold text-primary-dark" > Quantity </label>
+    <input type="number" name="quantity" id="quantity" class="border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-2 max-w-fit focus:outline-none focus:ring-2 focus:ring-primary-dark focus:border-transparent transition">
+    <!-- Select Category -->
+    <label for="category" class="text-lg  font-extrabold text-primary-dark">Select Category</label>
+    <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-dark focus:border-transparent transition" name="categoryId" id="categories" required>
+      <!-- Default Selected Category-->
+      <option value="" selected disabled> Select Category</option>
+      <% categories.forEach(category=>{ %>
+      <option value="<%=category.id%>"><%= category.name %></option>
+      <%    })%>
+    </select>
+    <button type="submit" class="px-4 py-2 text-sm rounded-md bg-primary-dark text-white transition ">
+      Add Item
+    </button>
+  </form>
 </div>
