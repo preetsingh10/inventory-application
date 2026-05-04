@@ -1,11 +1,15 @@
+<!-- Global state variables of the app -->
+<% let categoryId = null %>
+
+
 <!-- Header for small screens-->
 
 <!-- Menu icon -->
-<div onclick="openMenu()" class="flex gap-2 lg:block bg-primary-dark">
-  <button class="lg:hidden "><svg xmlns="http://www.w3.org/2000/svg" height="34px" viewBox="0 -960 960 960" width="34px" fill="white">
+<div  class="flex gap-2 lg:block ">
+  <button onclick="openMenu()" class="lg:hidden "><svg class="fill-primary-dark" xmlns="http://www.w3.org/2000/svg" height="34px" viewBox="0 -960 960 960" width="34px"   >
       <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
     </svg></button>
-  <h1 class="  text-white  text-4xl p-1">Tech Inventory</h1>
+  <h1 class="  text-primary-dark text-4xl p-1">Tech Inventory</h1>
 </div>
 
 <!-- drawer -->
@@ -36,11 +40,14 @@
 
   <% categories.forEach(category=>{ %>
   <button class=" p-2 border border-primary rounded-md 
-  hover:bg-primary-dark hover:text-white hover:border-transparent cursor-pointer" onclick="showItemsFromServer('<%= `/category/${category.id}` %>','items-div')"><%= category.name%></button>
+  hover:bg-primary-dark hover:text-white hover:border-transparent cursor-pointer" onclick="showItemsFromServer('<%= `/category/${category.id}` %>','items-div', )"><%= category.name%></button>
   <% }) %>
 </div>
 
-<!-- Items Table -->
+<!-- Select Category -->
+<%-include('../partials/selectCategory')%>
+
+<!-- Items Table From Server -->
 <div id="items-div">
 
 </div>

@@ -26,6 +26,13 @@ function closeMenu() {
   document.getElementById("drawer").classList.add("-translate-x-full");
 }
 
+// Select Event listener
+const select = document.getElementById('select-category')
+select.addEventListener('change', async(e)=>{
+  const categoryId = e.target.value
+  showItemsFromServer(`category/${categoryId}`,'items-div')
+})
+
 // *********************************** Small Screen Functions ********************************************************
 
 // -- global variables pointing to small screen forms and elements
