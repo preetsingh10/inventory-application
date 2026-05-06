@@ -1,8 +1,9 @@
-const { getCategoryItemsFromDb } = require("../db/queries");
+const { getCategoryItemsFromDb,getAllCategories} = require("../db/queries");
 async function getCategoryItems(req, res) {
   const categoryId = req.params.categoryId;
   const items = await getCategoryItemsFromDb(categoryId);
-  res.render("items", { items });
+  const categories = await getAllCategories()
+  res.render("items", { categories,items });
 }
 
 module.exports = {

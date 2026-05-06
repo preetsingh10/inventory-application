@@ -30,7 +30,8 @@ function closeMenu() {
 const select = document.getElementById('select-category')
 select.addEventListener('change', async(e)=>{
   const categoryId = e.target.value
-  showItemsFromServer(`category/${categoryId}`,'items-div')
+  // showItemsFromServer(`category/${categoryId}`,'items-div')
+  window.location.href = `/category/${categoryId}`
 })
 
 // *********************************** Small Screen Functions ********************************************************

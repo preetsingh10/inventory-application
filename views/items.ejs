@@ -1,24 +1,50 @@
-<% if(items.length === 0 ) { %>
-<h1 class="bg-yellow-300">No items in this Category</h1>
-<%} else { %>
-<table class=" mt-3 ml-1 mr-1 w-dvw  table-auto border border-primary  overflow-scroll">
-  <thead>
-    <tr>
-      <th class=" text-start">Name</th>
-      <th class=" text-start">Price</th>
-      <th class=" text-start">Quantity</th>
-    </tr>
-  </thead>
+<!DOCTYPE html>
+<html lang="en">
 
-  <tbody>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Application</title>
+  <link rel="stylesheet" href="/output.css">
+  <script src="/index.js" defer></script>
+</head>
 
-    <% items.forEach(item=>{ %>
-    <tr class="  border border-primary rounded-2xl">
-      <td class="p-1 pl-0" ><%= item.name %></td>
-      <td class="p-1 pl-0" >$<%= item.price %></td>
-      <td class="p-1 pl-0"><%= item.quantity %> pcs</td>
-    </tr>
-    <% }) %>
-    <%}%>
+<body>
+  <!-- global components start -->
+  <%-include('partials/forms-for-mobile/editFormSmallScreen')%>
+  <!-- overlay -->
+  <%- include('partials/overlay')%>
+  <!-- global components end-->
+  <%- include('partials/header')%>
+
+  <!-- Items Table From Server -->
+  <div id="items-div">
+    <% if(items.length === 0 ) { %>
+    <h1 class="bg-yellow-300">No items in this Category</h1>
+    <%} else { %>
+    <table class=" mt-3 ml-1 mr-1 w-dvw  table-auto border border-primary  overflow-scroll">
+      <thead>
+        <tr>
+          <th class=" text-start">Name</th>
+          <th class=" text-start">Price</th>
+          <th class=" text-start">Quantity</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <% items.forEach(item=>{ %>
+        <tr class="  border border-primary rounded-2xl">
+          <td class="p-1 pl-0"><%= item.name %></td>
+          <td class="p-1 pl-0">$<%= item.price %></td>
+          <td class="p-1 pl-0"><%= item.quantity %> pcs</td>
+        </tr>
+        <% }) %>
+        <%}%>
 </tbody>
 </table>
+</div>
+<%- include('partials/footer')%>
+</body>
+
+</html>
