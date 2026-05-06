@@ -26,10 +26,15 @@ async function addItemInDb(itemName, itemPrice, itemQuantity, categoryId) {
     [itemName, itemPrice, itemQuantity, categoryId],
   );
 }
+async function getCategoryName(categoryId){
+  const data = await pool.query("SELECT name FROM categories WHERE id=($1)", [categoryId])
+  return data.rows[0].name
+}
 module.exports = {
   getAllCategories,
   getAllItems,
   getCategoryItemsFromDb,
   addCategoryToDb,
   addItemInDb,
+  getCategoryName
 };
