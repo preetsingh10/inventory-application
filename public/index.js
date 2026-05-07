@@ -27,13 +27,16 @@ function closeMenu() {
 }
 
 // Select Event listener
-const select = document.getElementById('select-category')
+try {
+  const select = document.getElementById('select-category')
 select.addEventListener('change', async(e)=>{
   const categoryId = e.target.value
   // showItemsFromServer(`category/${categoryId}`,'items-div')
   window.location.href = `/category/${categoryId}`
 })
-
+} catch (error) {
+  console.log(error.message) 
+}
 // *********************************** Small Screen Functions ********************************************************
 
 // -- global variables pointing to small screen forms and elements

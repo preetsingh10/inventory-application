@@ -5,6 +5,7 @@ const categoryRouter = require('./routes/categoryRoutes')
 const { getIndex } = require("./controllers/inventoryController");
 const {addCategory} = require('./controllers/addCategoryController')
 const {addItemController} = require('./controllers/addItemController')
+const {editController} = require('./controllers/editController')
 
 app.set("view engine", "ejs");
 
@@ -23,6 +24,9 @@ app.post('/addCategory', addCategory)
 
 // add Item request Handler
 app.post('/addItem', addItemController)
+
+// edit page
+app.get('/edit', editController)
 
 app.listen(PORT, () => {
   console.log("the app is running on port: ", PORT);
