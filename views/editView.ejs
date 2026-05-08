@@ -22,10 +22,12 @@
 
   <div id="list-of-categories" class="flex flex-col gap-0.5 p-2 overflow-scroll">
     <% categories.forEach(category=>{ %>
-    <div onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" class="flex justify-between border border-primary-dark rounded-xs">
-      Category: <%=category.name%>
+    <div class="flex justify-between border border-primary-dark rounded-xs">
+      <div onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" class="flex">
+        Category: <%=category.name%>
+        <%- include('partials/svg/dropDown',{id:category.id})%>
+      </div>
       <div class="flex">
-        <%- include('partials/svg/dropDown')%>
         <%-include('partials/svg/edit', {category})%>
         <%-include('partials/svg/delete')%>
       </div>

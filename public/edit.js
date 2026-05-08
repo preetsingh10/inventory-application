@@ -19,19 +19,24 @@ async function getItemsForCategory(categoryId) {
 
 function openItemsPanel(categoryId) {
   const listOfCategories = document.getElementById("list-of-categories");
-  let openedPanel = document.getElementById(openedPanelId);
+  const dropDownSvg = listOfCategories.querySelector(`#dropDownForId-${categoryId}`)
+  let openedPanel = document.getElementById(`categoryId-${openedPanelId}`);
   const currentPanel = listOfCategories.querySelector(
     `#categoryId-${categoryId}`,
   );
   // first of all close the opened panel
   if (openedPanelId !== undefined) {
     openedPanel.classList.add("hidden");
+    const upwardsSvg = listOfCategories.querySelector(`#dropDownForId-${openedPanelId}`)
+    upwardsSvg.classList.remove('rotate-180')
   }
   // now open the selected panel
   if (currentPanel !== null) {
+    //rotate the dropdown svg upwards
+    dropDownSvg.classList.add('rotate-180')
     currentPanel.classList.remove("hidden");
     // set the id of the opened panel to the global state
-    openedPanelId = `categoryId-${categoryId}`;
+    openedPanelId = categoryId;
   }
 }
 
