@@ -24,6 +24,11 @@ function openMenu() {
 function closeMenu() {
   document.getElementById("overlay").classList.add("hidden");
   document.getElementById("drawer").classList.add("-translate-x-full");
+  const editForm = document.querySelector('#edit-category-form-for-small-screen')
+  if(editForm){
+    editForm.classList.add("translate-y-full")
+  }
+
 }
 
 // Select Event listener

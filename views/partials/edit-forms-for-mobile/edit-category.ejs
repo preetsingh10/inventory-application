@@ -1,0 +1,15 @@
+<div id="edit-category-form-for-small-screen" class="lg:hidden 
+z-60
+fixed top-8/12 left-0 p-1 w-full h-full 
+transform translate-y-full transition-transform duration-300 ease-in-out
+border-t-3 border-l-3 border-r-3  border-primary-dark bg-white rounded-t-3xl">
+  <div class="border-2 border-primary-dark rounded-full     w-16 m-auto mt-2"></div>
+  <form action="/category/updatedCategory" method="POST" class="mt-5 flex flex-col gap-4">
+    <label for="categoryName" class="text-lg text-center font-extrabold text-primary-dark">Category Name</label>
+    <input type="hidden" name="categoryId" id="categoryId">
+    <input type="text" name="categoryName" id="categoryName" placeholder="e.g. Electronics" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-dark focus:border-transparent transition" />
+    <button type="submit" class="px-4 py-2 text-sm rounded-md bg-primary-dark text-white transition ">
+      Apply changes
+    </button>
+  </form>
+</div>

@@ -34,3 +34,24 @@ function openItemsPanel(categoryId) {
     openedPanelId = `categoryId-${categoryId}`;
   }
 }
+
+function openEditCategoryForm(categoryName, categoryId) {
+  const editForm = document.querySelector(
+    "#edit-category-form-for-small-screen",
+  );
+  const categoryNameInput = editForm.querySelector("#categoryName");
+  const categoryIdIput = editForm.querySelector("#categoryId");
+  const overlay = document.querySelector("#overlay");
+  // blur background overlay
+  overlay.classList.remove("hidden");
+
+  editForm.classList.remove("translate-y-full");
+  categoryNameInput.value = categoryName;
+  categoryIdIput.value = categoryId;
+}
+function closeEditForm() {
+  const editForm = document.querySelector(
+    "#edit-category-form-for-small-screen",
+  );
+  editForm.classList.add("translate-y-full");
+}

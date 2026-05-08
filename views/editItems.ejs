@@ -1,5 +1,9 @@
 <div>
+  <% if(items.length === 0){ %>
+  <h1>No items in this category</h1>
+  <%}else{%>
   <% items.forEach(item=>{%>
-    <div><%= item.name%></div>
+  <div><%= item.name%></div>
   <%})%>
+  <%}%>
 </div>

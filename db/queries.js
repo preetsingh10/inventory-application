@@ -1,7 +1,7 @@
 const pool = require("./pool");
 
 async function getAllCategories() {
-  const data = await pool.query("SELECT * FROM categories");
+  const data = await pool.query("SELECT * FROM categories ORDER BY id");
   return data.rows;
 }
 
@@ -26,9 +26,21 @@ async function addItemInDb(itemName, itemPrice, itemQuantity, categoryId) {
     [itemName, itemPrice, itemQuantity, categoryId],
   );
 }
-async function getCategoryName(categoryId){
-  const data = await pool.query("SELECT name FROM categories WHERE id=($1)", [categoryId])
-  return data.rows[0].name
+async function getCategoryName(categoryId) {
+  const data = await pool.query("SELECT name FROM categories WHERE id=($1)", [
+    categoryId,
+  ]);
+  return data.rows[0].name;
+}
+async function updateCategoryInDb(id, name) {
+  try {
+    await pool.query("UPDATE categories SET name=($1) WHERE id=($2)", [
+      name,
+      id,
+    ]);
+  } catch (error) {
+    console.log(error);
+  }
 }
 module.exports = {
   getAllCategories,
@@ -36,5 +48,6 @@ module.exports = {
   getCategoryItemsFromDb,
   addCategoryToDb,
   addItemInDb,
-  getCategoryName
+  getCategoryName,
+  updateCategoryInDb,
 };

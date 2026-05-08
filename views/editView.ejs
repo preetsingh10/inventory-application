@@ -7,7 +7,7 @@
   <title>Inventory Application</title>
   <link rel="stylesheet" href="/output.css">
   <script src="/index.js" defer></script>
-  <script src="/edit.js" defer ></script>
+  <script src="/edit.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js" integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V" crossorigin="anonymous"></script>
 </head>
 
@@ -16,20 +16,22 @@
   <%-include('partials/forms-for-mobile/editFormSmallScreen')%>
   <!-- overlay -->
   <%- include('partials/overlay')%>
+  <%- include('partials/edit-forms-for-mobile/edit-category' )%>
   <!-- global components end-->
   <%- include('partials/header')%>
 
   <div id="list-of-categories" class="flex flex-col gap-0.5 p-2 overflow-scroll">
     <% categories.forEach(category=>{ %>
-    <div onclick="openItemsPanel('<%= category.id %>')"  hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" class="flex justify-between border border-primary-dark rounded-xs">
+    <div onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" class="flex justify-between border border-primary-dark rounded-xs">
       Category: <%=category.name%>
       <div class="flex">
         <%- include('partials/svg/dropDown')%>
+        <%-include('partials/svg/edit', {category})%>
         <%-include('partials/svg/delete')%>
       </div>
     </div>
     <div id="categoryId-<%=category.id%>" class="items-panel hidden">
-    
+
     </div>
     <%})%>
   </div>
