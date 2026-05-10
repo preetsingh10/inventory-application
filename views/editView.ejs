@@ -16,20 +16,25 @@
   <%-include('partials/forms-for-mobile/editFormSmallScreen')%>
   <!-- overlay -->
   <%- include('partials/overlay')%>
+
+  <!--Edit Category Form-->
   <%- include('partials/edit-forms-for-mobile/edit-category' )%>
+
+  <!-- Delete Category Form-->
+  <%- include('partials/edit-forms-for-mobile/delete-category')%>
   <!-- global components end-->
   <%- include('partials/header')%>
 
   <div id="list-of-categories" class="flex flex-col gap-0.5 p-2 overflow-scroll">
     <% categories.forEach(category=>{ %>
     <div class="flex justify-between border border-primary-dark rounded-xs">
-      <div onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" class="flex">
-        Category: <%=category.name%>
+      <div id="categoryHeading-<%=category.id%>" onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" class="flex hover:cursor-pointer">
+        <%=category.name%>
         <%- include('partials/svg/dropDown',{id:category.id})%>
       </div>
       <div class="flex">
         <%-include('partials/svg/edit', {category})%>
-        <%-include('partials/svg/delete')%>
+        <%-include('partials/svg/delete', {category})%>
       </div>
     </div>
     <div id="categoryId-<%=category.id%>" class="items-panel hidden">

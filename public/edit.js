@@ -1,10 +1,7 @@
-// global state variable start
-
-// this varialbe will store the id of the opened panel so that it can be closed later
-let openedPanelId;
-
-// end
-
+// state Object
+const state = {
+  openedCategoryId: [],
+};
 async function showItemsForEditing(categoryName, categoryId) {
   const div = document.getElementById(`${categoryName}-items`);
   div.classList.remove("hidden");
@@ -17,26 +14,28 @@ async function getItemsForCategory(categoryId) {
   return html;
 }
 
-function openItemsPanel(categoryId) {
+function openItemsPanel(id) {
+  const categoryId = Number(id);
+  console.log(state, categoryId);
   const listOfCategories = document.getElementById("list-of-categories");
-  const dropDownSvg = listOfCategories.querySelector(`#dropDownForId-${categoryId}`)
-  let openedPanel = document.getElementById(`categoryId-${openedPanelId}`);
-  const currentPanel = listOfCategories.querySelector(
+  const dropDownSvg = listOfCategories.querySelector(
+    `#dropDownForId-${categoryId}`,
+  );
+  const categoryHeading = listOfCategories.querySelector(
+    `#categoryHeading-${categoryId}`,
+  );
+  const itemsPanel = listOfCategories.querySelector(
     `#categoryId-${categoryId}`,
   );
-  // first of all close the opened panel
-  if (openedPanelId !== undefined) {
-    openedPanel.classList.add("hidden");
-    const upwardsSvg = listOfCategories.querySelector(`#dropDownForId-${openedPanelId}`)
-    upwardsSvg.classList.remove('rotate-180')
-  }
-  // now open the selected panel
-  if (currentPanel !== null) {
-    //rotate the dropdown svg upwards
-    dropDownSvg.classList.add('rotate-180')
-    currentPanel.classList.remove("hidden");
-    // set the id of the opened panel to the global state
-    openedPanelId = categoryId;
+  if (state.openedCategoryId.includes(categoryId)) {
+    itemsPanel.classList.toggle("hidden");
+    dropDownSvg.classList.toggle("rotate-180");
+  } else {
+    itemsPanel.classList.toggle("hidden");
+    dropDownSvg.classList.toggle("rotate-180");
+    state.openedCategoryId = state.openedCategoryId.filter(
+      (id) => id != categoryId,
+    );
   }
 }
 
@@ -59,4 +58,16 @@ function closeEditForm() {
     "#edit-category-form-for-small-screen",
   );
   editForm.classList.add("translate-y-full");
+}
+
+// Delete Category Form
+function openDeleteCategoryForm() {
+  const deleteCategoryForm = document.getElementById(
+    "delete-category-form-for-small-screen",
+  );
+  // open form
+  deleteCategoryForm.classList.remove("translate-y-full");
+  const overlay = document.querySelector("#overlay");
+  // blur background overlay
+  overlay.classList.remove("hidden");
 }
