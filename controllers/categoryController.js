@@ -3,6 +3,7 @@ const {
   getAllCategories,
   getCategoryName,
   updateCategoryInDb,
+  deleteCategoryInDb,
 } = require("../db/queries");
 async function getCategoryItems(req, res) {
   const categoryId = req.params.categoryId;
@@ -27,11 +28,17 @@ async function updateCategory(req, res) {
   } catch (error) {
     console.log(error);
   }
-  res.redirect('/edit')
+  res.redirect("/edit");
+}
+async function deleteCategory(req, res) {
+  const categoryId = req.params.id;
+  await deleteCategoryInDb(categoryId);
+  res.redirect("/edit");
 }
 
 module.exports = {
   getCategoryItems,
   getItemsData,
   updateCategory,
+  deleteCategory,
 };

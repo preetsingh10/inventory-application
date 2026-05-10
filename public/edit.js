@@ -61,13 +61,25 @@ function closeEditForm() {
 }
 
 // Delete Category Form
-function openDeleteCategoryForm() {
+function openDeleteCategoryForm(categoryId, categoryName) {
   const deleteCategoryForm = document.getElementById(
     "delete-category-form-for-small-screen",
   );
+  const formElement = deleteCategoryForm.querySelector("#form-deleteCategory");
   // open form
   deleteCategoryForm.classList.remove("translate-y-full");
+  deleteCategoryForm.querySelector("#categoryToBeDelted").textContent =
+    `Category: ${categoryName}`;
+  // assign the url to the form
+  formElement.method="POST"
+  formElement.action = `/category/delete/${categoryId}`;
+
   const overlay = document.querySelector("#overlay");
   // blur background overlay
-  overlay.classList.remove("hidden");
+  overlay.classList.toggle("hidden");
+  overlay.addEventListener(
+    "click",
+    () => deleteCategoryForm.classList.toggle("translate-y-full"),
+    { once: true },
+  );
 }
