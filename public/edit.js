@@ -49,6 +49,10 @@ function updateItemState(state,categoryId,itemId,itemProperty,itemValue){
 
 }
 
+function deleteCateogryFromState(categoryId){
+  delete state.updatedItems[categoryId]
+}
+
 async function showItemsForEditing(categoryName, categoryId) {
   const div = document.getElementById(`${categoryName}-items`);
   div.classList.remove("hidden");

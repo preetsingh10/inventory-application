@@ -41,6 +41,7 @@
     <button id="resetButtonForCategoryId-<%=categoryId%>" 
       hx-get="/category/data/<%=categoryId%>" 
       hx-target="#items-for-categoryId-<%=categoryId%>"
+      onclick="deleteCateogryFromState(<%=categoryId%>)"
       class="bg-black font-semibold text-white border rounded-md p-1 hidden">Reset</button>
   </div>
 </div>
