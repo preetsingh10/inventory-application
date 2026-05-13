@@ -16,9 +16,7 @@ async function getCategoryItems(req, res) {
 async function getItemsData(req, res) {
   const categoryId = req.params.categoryId;
   const items = await getCategoryItemsFromDb(categoryId);
-  console.log("thuadi request vich ehe ayea:", req.params.categoryId);
-  console.log(items);
-  res.render("editItems", { items });
+  res.render("editItems", { items, categoryId});
 }
 async function updateCategory(req, res) {
   const categoryId = req.body.categoryId;
@@ -35,6 +33,10 @@ async function deleteCategory(req, res) {
   await deleteCategoryInDb(categoryId);
   res.redirect("/edit");
 }
+// async function updateItems(req, res){
+//   const categoryId = req.params.categoryId
+//   await updateAllItemsOfCategory(categoryId)
+// }
 
 module.exports = {
   getCategoryItems,

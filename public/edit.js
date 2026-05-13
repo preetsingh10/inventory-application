@@ -1,7 +1,54 @@
-// state Object
+// client side state Object
 const state = {
   openedCategoryId: [],
+
+  /* 
+  Format of the state object for updated Item:
+  categoryId:{
+    itemID:{
+      itemName:"apple",
+      itemPrice: "5",
+      itemQunatity: "12"
+    }
+  }
+*/
+  updatedItems: {},
 };
+// event listeners
+const listOfCategories = document.getElementById("list-of-categories");
+listOfCategories.addEventListener("input", (e) => {
+  const categoryId = e.target.dataset.categoryId;
+  const itemId = e.target.dataset.itemId;
+  const itemProperty = e.target.id;
+  const itemPropertValue = e.target.value;
+  const saveButtonForCurrentCategory = listOfCategories.querySelector(
+    `#saveButtonForCategoryId-${categoryId}`,
+  );
+  const resetButtonForCurrentCategory = listOfCategories.querySelector(
+    `#resetButtonForCategoryId-${categoryId}`,
+  );
+  updateItemState(state,categoryId,itemId,itemProperty,itemPropertValue)
+  saveButtonForCurrentCategory.classList.remove("hidden");
+  resetButtonForCurrentCategory.classList.remove("hidden");
+  console.log(state.updatedItems);
+});
+
+function updateItemState(state,categoryId,itemId,itemProperty,itemValue){
+  const currentState = state.updatedItems
+  const newState = {
+    ...currentState,
+    [categoryId]:{
+      ...currentState[categoryId],
+      [itemId]:{
+        ...currentState[categoryId]?.[itemId],
+      [itemProperty]:itemValue
+      }
+    }
+  }
+  state.updatedItems = newState 
+
+}
+
 async function showItemsForEditing(categoryName, categoryId) {
   const div = document.getElementById(`${categoryName}-items`);
   div.classList.remove("hidden");
@@ -10,13 +57,11 @@ async function showItemsForEditing(categoryName, categoryId) {
 async function getItemsForCategory(categoryId) {
   const data = await fetch(`/category/data/${categoryId}`);
   const html = await data.text();
-  console.log(categoryId);
   return html;
 }
 
 function openItemsPanel(id) {
   const categoryId = Number(id);
-  console.log(state, categoryId);
   const listOfCategories = document.getElementById("list-of-categories");
   const dropDownSvg = listOfCategories.querySelector(
     `#dropDownForId-${categoryId}`,
@@ -71,7 +116,7 @@ function openDeleteCategoryForm(categoryId, categoryName) {
   deleteCategoryForm.querySelector("#categoryToBeDelted").textContent =
     `Category: ${categoryName}`;
   // assign the url to the form
-  formElement.method="POST"
+  formElement.method = "POST";
   formElement.action = `/category/delete/${categoryId}`;
 
   const overlay = document.querySelector("#overlay");
