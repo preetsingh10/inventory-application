@@ -1,47 +1,36 @@
+<% console.log(items) %>
 <div id="items-for-categoryId-<%=categoryId%>" class="overflow-x-auto">
   <% if(items.length === 0){ %>
   <h1>No items in this category</h1>
   <%}else{%>
-  <table class="border-separate border border-primary-dark w-full table-fixed" >
-    <tr >
-      <th class="border border-primary-dark" >Name</th>
-      <th class="border border-primary-dark" >Price</th>
-      <th class="border border-primary-dark" >Quantity</th>
+  <table class="border-separate border border-primary-dark w-full table-fixed">
+    <tr>
+      <th class="border border-primary-dark">Name</th>
+      <th class="border border-primary-dark">Price</th>
+      <th class="border border-primary-dark">Quantity</th>
     </tr>
-  <% items.forEach(item=>{%>
-  <tr id="items-row-of-categoryID-<%=categoryId%>">
-  <td class="border border-primary-dark"> 
-    <input  
-    data-category-id="<%=categoryId%>"
-    data-item-id="<%=item.id%>"
-    class="w-full" type="text" name="itemName" id="itemName" value="<%=item.name%>">
-  </td>
-  <td class="border border-primary-dark" >
-    <input 
-    data-category-id="<%=categoryId%>"  
-    data-item-id="<%=item.id%>"
-    class="w-full" type="number" name="itemPrice" id="itemPrice" value="<%=item.price%>">
-  </td>
-  <td  class="border border-primary-dark" > 
-    <input 
-    data-category-id="<%=categoryId%>" 
-    data-item-id="<%=item.id%>"
-    class="w-full" type="number" name="itemQuantity" id="itemQuantity" value="<%=item.quantity%>">
-  </td>
-  </tr>
-  <%})%>
+    <% items.forEach(item=>{%>
+    <tr id="items-row-of-categoryID-<%=categoryId%>">
+      <input type="hidden" name="itemId" id="itemId" value="<%= item.id %>">
+      <td class="border border-primary-dark">
+        <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="text" name="itemName" id="itemName" value="<%=item.name%>">
+      </td>
+      <td class="border border-primary-dark">
+        <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="number" name="itemPrice" id="itemPrice" value="<%=item.price%>">
+      </td>
+      <td class="border border-primary-dark">
+        <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="number" name="itemQuantity" id="itemQuantity" value="<%=item.quantity%>">
+      </td>
+    </tr>
+    <%})%>
   </table>
   <%}%>
   <div class="mt-1 flex gap-1.5 justify-end" >
     <button id="saveButtonForCategoryId-<%=categoryId%>"
-      hx-post="/updateItems/<%=categoryId%>"
-      hx-target="#items-for-categoryId-<%=categoryId%>"
-      hx-include="items-row-of-categoryID-<%=categoryId%>"
-      class="bg-primary-dark font-semibold text-white border rounded-md p-1 hidden" > Save</button>
-    <button id="resetButtonForCategoryId-<%=categoryId%>" 
-      hx-get="/category/data/<%=categoryId%>" 
-      hx-target="#items-for-categoryId-<%=categoryId%>"
-      onclick="deleteCateogryFromState(<%=categoryId%>)"
-      class="bg-black font-semibold text-white border rounded-md p-1 hidden">Reset</button>
-  </div>
+  hx-post="/category/updateItems/<%=categoryId%>"
+  hx-include="#items-row-of-categoryID-<%=categoryId%>"
+hx-target="#items-for-categoryId-<%=categoryId%>" 
+  class="bg-primary-dark font-semibold text-white border rounded-md p-1 hidden" > Save</button>
+  <button id="resetButtonForCategoryId-<%=categoryId%>" hx-get="/category/data/<%=categoryId%>" hx-target="#items-for-categoryId-<%=categoryId%>" class="bg-black font-semibold text-white border rounded-md p-1 hidden">Reset</button>
+</div>
 </div>
