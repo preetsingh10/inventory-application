@@ -20,7 +20,7 @@
   <!-- Select Category -->
   <%-include('partials/selectCategory')%>
   <!--  All categories in Card Shape -->
-  <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] p-1 gap-1">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] p-1 gap-1">
     <% categories.forEach(category => {%>
     <%-include('partials/categoryCard', {category})%>
     <% })  %>
