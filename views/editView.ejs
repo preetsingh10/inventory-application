@@ -25,7 +25,7 @@
   <!-- global components end-->
   <%- include('partials/header')%>
 
-  <div id="list-of-categories" class="flex flex-col gap-2 p-2 overflow-scroll">
+  <div id="list-of-categories" class="flex flex-col gap-2 p-2  ">
     <% categories.forEach(category=>{ %>
     <!-- parent categoy div -->
     <div class="border-2 border-primary-dark rounded-lg p-3">
@@ -53,7 +53,8 @@
   </div>
 
 
-
+<!-- Add Button -->
+<%-include('partials/addButton')%>
 </body>
 
 </html>
