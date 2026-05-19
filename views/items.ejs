@@ -38,7 +38,7 @@
         <% items.forEach(item=>{ %>
         <tr class="  border border-primary rounded-2xl">
           <td class="p-1 pl-0"><%= item.name %></td>
-          <td class="p-1 pl-0">$<%= item.price %></td>
+          <td class="p-1 pl-0">$<%= (item.price/100).toFixed(2) %></td>
           <td class="p-1 pl-0"><%= item.quantity %> pcs</td>
         </tr>
         <% }) %>

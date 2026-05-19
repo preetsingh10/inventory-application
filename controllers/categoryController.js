@@ -6,6 +6,7 @@ const {
   deleteCategoryInDb,
   updateItemsInDb
 } = require("../db/queries");
+const toCents = require("../utilityFunctions/toCents")
 async function getCategoryItems(req, res) {
   const categoryId = req.params.categoryId;
   const items = await getCategoryItemsFromDb(categoryId);
@@ -42,7 +43,7 @@ async function updateItems(req, res) {
     return{
       id: updatedState.itemId[index],
       name: updatedState.itemName[index],
-      price: updatedState.itemPrice[index],
+      price: toCents(updatedState.itemPrice[index]), // converting dollars to cents to store in db 
       quantity: updatedState.itemQuantity[index]
     }
   })

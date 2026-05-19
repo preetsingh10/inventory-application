@@ -16,7 +16,7 @@
         <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="text" name="itemName" id="itemName" value="<%=item.name%>">
       </td>
       <td class="border border-primary-dark">
-        <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="number" name="itemPrice" id="itemPrice" value="<%=item.price%>">
+        <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="number" name="itemPrice" id="itemPrice" value="<%= (item.price/100).toFixed(2) %>">
       </td>
       <td class="border border-primary-dark">
         <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="number" name="itemQuantity" id="itemQuantity" value="<%=item.quantity%>">
@@ -29,7 +29,7 @@
     <button id="saveButtonForCategoryId-<%=categoryId%>"
   hx-post="/category/updateItems/<%=categoryId%>"
   hx-include="#items-row-of-categoryID-<%=categoryId%>"
-hx-target="#items-for-categoryId-<%=categoryId%>" 
+  hx-target="#items-for-categoryId-<%=categoryId%>"
   class="bg-primary-dark font-semibold text-white border rounded-md p-1 hidden" > Save</button>
   <button id="resetButtonForCategoryId-<%=categoryId%>" hx-get="/category/data/<%=categoryId%>" hx-target="#items-for-categoryId-<%=categoryId%>" class="bg-black font-semibold text-white border rounded-md p-1 hidden">Reset</button>
 </div>
