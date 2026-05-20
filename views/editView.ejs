@@ -16,26 +16,23 @@
   <%-include('partials/forms-for-mobile/editFormSmallScreen')%>
   <!-- overlay -->
   <%- include('partials/overlay')%>
-
+  <!-- Large screen forms -->
+  <%- include('partials/editFormLargeScreen')%>
   <!--Edit Category Form-->
   <%- include('partials/edit-forms-for-mobile/edit-category' )%>
 
   <!-- Delete Category Form-->
   <%- include('partials/edit-forms-for-mobile/delete-category')%>
   <!-- global components end-->
-  <%- include('partials/header')%>
 
+  <%- include('partials/header')%>
   <div id="list-of-categories" class="flex flex-col gap-2 p-2  ">
     <% categories.forEach(category=>{ %>
     <!-- parent categoy div -->
     <div class="border-2 border-primary-dark rounded-lg p-3">
 
       <div class="flex justify-between ">
-        <div id="categoryHeading-<%=category.id%>" onclick="openItemsPanel('<%= category.id %>')" 
-        hx-get="category/data/<%= category.id %>" 
-        hx-trigger="click" 
-        hx-target="#categoryId-<%=category.id%>" 
-        class="flex hover:cursor-pointer font-bold text-primary-dark">
+        <div id="categoryHeading-<%=category.id%>" onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" class="flex hover:cursor-pointer font-bold text-primary-dark">
           <%=category.name%>
           <%- include('partials/svg/dropDown',{id:category.id})%>
         </div>
@@ -53,8 +50,9 @@
   </div>
 
 
-<!-- Add Button -->
-<%-include('partials/addButton')%>
+  <!-- ** Add Button ** -->
+  <%-include('partials/addButton')%>
+
 </body>
 
 </html>

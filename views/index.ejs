@@ -12,12 +12,15 @@
   <script src="/index.js" defer></script>
 </head>
 
-<body class="lg:mx-10">
+<body>
+
   <!-- global components start -->
   <%-include('partials/forms-for-mobile/editFormSmallScreen')%>
+  <%- include('partials/editFormLargeScreen')%>
   <!-- overlay -->
   <%- include('partials/overlay')%>
   <!-- global components end-->
+  
   <%- include('partials/header')%>
   <!-- Select Category -->
   <%-include('partials/selectCategory')%>
