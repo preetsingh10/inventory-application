@@ -4,9 +4,9 @@ const {
   getCategoryName,
   updateCategoryInDb,
   deleteCategoryInDb,
-  updateItemsInDb
+  updateItemsInDb,
 } = require("../db/queries");
-const toCents = require("../utilityFunctions/toCents")
+const toCents = require("../utilityFunctions/toCents");
 async function getCategoryItems(req, res) {
   const categoryId = req.params.categoryId;
   const items = await getCategoryItemsFromDb(categoryId);
@@ -37,25 +37,40 @@ async function deleteCategory(req, res) {
 }
 async function updateItems(req, res) {
   const categoryId = req.params.categoryId;
-  // await updateAllItemsOfCategory(categoryId)
-  const updatedState = req.body
-  const updatedItems = updatedState.itemId.map((id,index)=>{
-    return{
-      id: updatedState.itemId[index],
-      name: updatedState.itemName[index],
-      price: toCents(updatedState.itemPrice[index]), // converting dollars to cents to store in db 
-      quantity: updatedState.itemQuantity[index]
+  console.log("***** start *****");
+  console.log(req.body);
+  console.log("***** Finish *****");
+  const updatedState = req.body;
+  let updatedItems;
+
+  // For multiple Items 
+  if (Array.isArray(updatedState.itemId)) {
+    updatedItems = updatedState.itemId.map((id, index) => {
+      return {
+        id: updatedState.itemId[index],
+        name: updatedState.itemName[index],
+        price: toCents(updatedState.itemPrice[index]), // converting dollars to cents to store in db
+        quantity: updatedState.itemQuantity[index],
+      };
+    });
+    for (const item of updatedItems) {
+      await updateItemsInDb(item.id, item.name, item.price, item.quantity);
     }
-  })
-  // updatedItems.forEach(async(item)=>{
-  //    await updateItemsInDb(item.id,item.name, item.price, item.quantity)
-  // })
-  for(const item of updatedItems){
-     await updateItemsInDb(item.id,item.name, item.price, item.quantity)
+
+    const items = await getCategoryItemsFromDb(categoryId);
+    res.render("editItems", { items, categoryId });
+  } else {  // For Single Item
+    updatedItems = {
+      id: updatedState.itemId,
+      name: updatedState.itemName,
+      price: toCents(updatedState.itemPrice), // converting dollars to cents to store in db
+      quantity: updatedState.itemQuantity,
+    };
+
+    await updateItemsInDb(updatedItems.id, updatedItems.name, updatedItems.price, updatedItems.quantity);
+    const items = await getCategoryItemsFromDb(categoryId);
+    res.render("editItems", { items, categoryId });
   }
-  
-  const items = await getCategoryItemsFromDb(categoryId)
-  res.render("editItems",{items, categoryId})
 }
 
 module.exports = {

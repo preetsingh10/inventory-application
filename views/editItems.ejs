@@ -1,4 +1,3 @@
-<% console.log(items) %>
 <div id="items-for-categoryId-<%=categoryId%>" class="overflow-x-auto">
   <% if(items.length === 0){ %>
   <h1>No items in this category</h1>
@@ -28,7 +27,7 @@
   <div class="mt-1 flex gap-1.5 justify-end" >
     <button id="saveButtonForCategoryId-<%=categoryId%>"
   hx-post="/category/updateItems/<%=categoryId%>"
-  hx-include="#items-row-of-categoryID-<%=categoryId%>"
+  hx-include="#items-for-categoryId-<%=categoryId%>"
   hx-target="#items-for-categoryId-<%=categoryId%>"
   class="bg-primary-dark font-semibold text-white border rounded-md p-1 hidden" > Save</button>
   <button id="resetButtonForCategoryId-<%=categoryId%>" hx-get="/category/data/<%=categoryId%>" hx-target="#items-for-categoryId-<%=categoryId%>" class="bg-black font-semibold text-white border rounded-md p-1 hidden">Reset</button>
