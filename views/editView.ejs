@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <!-- global components start -->
+  <!-- ********************************************** Global Components Start **********************************************  -->
   <%-include('partials/forms-for-mobile/editFormSmallScreen')%>
   <!-- overlay -->
   <%- include('partials/overlay')%>
@@ -23,11 +23,20 @@
 
   <!-- Delete Category Form-->
   <%- include('partials/edit-forms-for-mobile/delete-category')%>
-  <!-- global components end-->
+  
+  <!-- ######################### Forms For Large Screen #########################  -->
+  
+  <%- include('partials/forms-for-desktop/addItem')%>
+  
+  <!-- ********************************************** Global Components End **********************************************  -->
 
   <%- include('partials/header')%>
-  <!--Add Category for large screens -->
+  <!--Buttons For Large Screen -->
+  <div class="flex gap-2 mt-2">
   <%-include('partials/desktopButtons/addCategoryButton')%>
+  <%- include('partials/desktopButtons/addItemButton')%>
+  </div>
+
 
   <div id="list-of-categories" class="flex flex-col gap-2 mt-2">
     <% categories.forEach(category=>{ %>

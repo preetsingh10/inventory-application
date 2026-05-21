@@ -1,12 +1,3 @@
-function showAddCategoryForm() {
-  closeMenu();
-  const dialog = document.getElementById("add-category");
-  dialog.showModal();
-}
-function removeAddCategoryForm() {
-  const dialog = document.getElementById("add-category");
-  dialog.close();
-}
 async function showItemsFromServer(url, elementId) {
   closeMenu();
   document.getElementById(elementId).innerHTML =
@@ -83,4 +74,24 @@ function openAddItemFormSmall() {
   editFormOverlay.classList.remove("hidden");
   editButton.classList.add("hidden");
   addItemForm.classList.remove("translate-y-full");
+}
+
+// *********************************** Large Screen Functions ********************************************************
+
+function showAddCategoryForm() {
+  closeMenu();
+  const dialog = document.getElementById("add-category");
+  dialog.showModal();
+}
+function removeAddCategoryForm() {
+  const dialog = document.getElementById("add-category");
+  dialog.close();
+}
+function showAddItemForm(){
+  const dialog = document.getElementById("add-item-dialog")
+  dialog.showModal()
+}
+function removeAddItemForm(){
+  const dialog = document.getElementById("add-item-dialog")
+  dialog.close()
 }
