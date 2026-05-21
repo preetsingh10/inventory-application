@@ -467,8 +467,23 @@
   .fill-primary-dark {
     fill: var(--color-primary-dark);
   }
+  .fill-white {
+    fill: var(--color-white);
+  }
   .stroke-1 {
     stroke-width: 1;
+  }
+  .stroke-3 {
+    stroke-width: 3;
+  }
+  .stroke-\[3px\] {
+    stroke-width: 3px;
+  }
+  .stroke-\[4px\] {
+    stroke-width: 4px;
+  }
+  .stroke-\[14px\] {
+    stroke-width: 14px;
   }
   .p-0 {
     padding: calc(var(--spacing) * 0);

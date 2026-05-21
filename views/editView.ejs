@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js" integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V" crossorigin="anonymous"></script>
 </head>
 
-<body class="lg:mx-10">
+<body>
   <!-- global components start -->
   <%-include('partials/forms-for-mobile/editFormSmallScreen')%>
   <!-- overlay -->
@@ -26,7 +26,10 @@
   <!-- global components end-->
 
   <%- include('partials/header')%>
-  <div id="list-of-categories" class="flex flex-col gap-2 p-2  ">
+  <!--Add Category for large screens -->
+  <%-include('partials/desktopButtons/addCategoryButton')%>
+
+  <div id="list-of-categories" class="flex flex-col gap-2 mt-2">
     <% categories.forEach(category=>{ %>
     <!-- parent categoy div -->
     <div class="border-2 border-primary-dark rounded-lg p-3">

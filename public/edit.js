@@ -1,18 +1,6 @@
 // client side state Object
 const state = {
   openedCategoryId: [],
-
-  /* 
-  Format of the state object for updated Item:
-  categoryId:{
-    itemID:{
-      itemName:"apple",
-      itemPrice: "5",
-      itemQunatity: "12"
-    }
-  }
-*/
-  updatedItems: {},
 };
 // event listeners
 const listOfCategories = document.getElementById("list-of-categories");
@@ -27,10 +15,8 @@ listOfCategories.addEventListener("input", (e) => {
   const resetButtonForCurrentCategory = listOfCategories.querySelector(
     `#resetButtonForCategoryId-${categoryId}`,
   );
-  updateItemState(state,categoryId,itemId,itemProperty,itemPropertValue)
   saveButtonForCurrentCategory.classList.remove("hidden");
   resetButtonForCurrentCategory.classList.remove("hidden");
-  console.log(state.updatedItems);
 });
 
 function updateItemState(state,categoryId,itemId,itemProperty,itemValue){
