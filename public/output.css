@@ -12,6 +12,8 @@
     --color-red-600: oklch(57.7% 0.245 27.325);
     --color-red-800: oklch(44.4% 0.177 26.899);
     --color-yellow-300: oklch(90.5% 0.182 98.111);
+    --color-green-100: oklch(96.2% 0.044 156.743);
+    --color-green-200: oklch(92.5% 0.084 155.995);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-black: #000;
@@ -446,6 +448,9 @@
   .bg-black {
     background-color: var(--color-black);
   }
+  .bg-green-100 {
+    background-color: var(--color-green-100);
+  }
   .bg-primary-dark {
     background-color: var(--color-primary-dark);
   }
@@ -639,6 +644,31 @@
       }
     }
   }
+  .odd\:bg-green-100 {
+    &:nth-child(odd) {
+      background-color: var(--color-green-100);
+    }
+  }
+  .odd\:bg-green-200 {
+    &:nth-child(odd) {
+      background-color: var(--color-green-200);
+    }
+  }
+  .odd\:bg-primary {
+    &:nth-child(odd) {
+      background-color: var(--color-primary);
+    }
+  }
+  .odd\:bg-white {
+    &:nth-child(odd) {
+      background-color: var(--color-white);
+    }
+  }
+  .even\:bg-white {
+    &:nth-child(even) {
+      background-color: var(--color-white);
+    }
+  }
   .hover\:cursor-pointer {
     &:hover {
       @media (hover: hover) {
@@ -731,6 +761,24 @@
   .lg\:hidden {
     @media (width >= 64rem) {
       display: none;
+    }
+  }
+  .lg\:text-2xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-2xl);
+      line-height: var(--tw-leading, var(--text-2xl--line-height));
+    }
+  }
+  .lg\:text-lg {
+    @media (width >= 64rem) {
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+  }
+  .lg\:text-xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
     }
   }
 }
