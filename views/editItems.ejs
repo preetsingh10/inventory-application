@@ -2,26 +2,35 @@
   <% if(items.length === 0){ %>
   <h1>No items in this category</h1>
   <%}else{%>
-  <table class="border-separate border border-primary-dark w-full table-fixed">
-    <tr>
-      <th class="border border-primary-dark">Name</th>
-      <th class="border border-primary-dark">Price</th>
-      <th class="border border-primary-dark">Quantity</th>
-    </tr>
-    <% items.forEach(item=>{%>
-    <tr id="items-row-of-categoryID-<%=categoryId%>">
-      <input type="hidden" name="itemId" id="itemId" value="<%= item.id %>">
-      <td class="border border-primary-dark">
-        <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="text" name="itemName" id="itemName" value="<%=item.name%>">
-      </td>
-      <td class="border border-primary-dark">
-        <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="number" name="itemPrice" id="itemPrice" value="<%= (item.price/100).toFixed(2) %>">
-      </td>
-      <td class="border border-primary-dark">
-        <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="w-full" type="number" name="itemQuantity" id="itemQuantity" value="<%=item.quantity%>">
-      </td>
-    </tr>
-    <%})%>
+  <table class="table-fixed w-full lg:text-lg border-separate ">
+    <thead>
+      <tr class="bg-primary-dark text-white border-collapse">
+        <td class="w-1/6 text-start">Id</td>
+        <td class="w-3/4 text-start">Name</td>
+        <td class="w-1/4 text-start">Price</td>
+        <td class="w-1/4 text-start">Quantity</td>
+      </tr>
+    </thead>
+    <tbody>
+    
+      <% items.forEach(item=>{%>
+      <tr  class="odd:bg-green-100 even: bg-white">
+        <td >
+        <%= item.id%>
+          <input type="hidden" name="itemId" id="itemId" value="<%=item.id%>">
+        </td>
+        <td class="border border-primary-dark">
+          <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="lg:text-lg w-full " type="text" name="itemName"  value="<%=item.name%>">
+        </td>
+        <td class="border border-primary-dark">
+          <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class=" lg:text-lg w-full" type="number" name="itemPrice"  value="<%= (item.price/100).toFixed(2) %>">
+        </td>
+        <td class="border border-primary-dark">
+          <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class=" lg:text-lg w-full" type="number" name="itemQuantity" value="<%=item.quantity%>">
+        </td>
+      </tr>
+      <%})%>
+    </tbody>
   </table>
   <%}%>
   <div class="mt-1 flex gap-1.5 justify-end" >
