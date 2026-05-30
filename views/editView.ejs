@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/output.css">
   <script src="/index.js" defer></script>
   <script src="/edit.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js" integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V" crossorigin="anonymous"></script>
+    <script src="htmx.js"></script>
 </head>
 
 <body>
@@ -23,35 +23,34 @@
 
   <!-- Delete Category Form-->
   <%- include('partials/edit-forms-for-mobile/delete-category')%>
-  
+
   <!-- ######################### Forms For Large Screen #########################  -->
-  
+
   <%- include('partials/forms-for-desktop/addItem')%>
-  
+
   <!-- ********************************************** Global Components End **********************************************  -->
 
   <%- include('partials/header')%>
   <!--Buttons For Large Screen -->
   <div class="flex gap-2 mt-2">
-  <%-include('partials/desktopButtons/addCategoryButton')%>
-  <%- include('partials/desktopButtons/addItemButton')%>
+    <%-include('partials/desktopButtons/addCategoryButton')%>
+    <%- include('partials/desktopButtons/addItemButton')%>
   </div>
 
 
-  <div id="list-of-categories" class="flex flex-col gap-2 mt-2">
+  <div id="list-of-categories" class="flex flex-col gap-2 mt-2 px-5">
     <% categories.forEach(category=>{ %>
     <!-- parent categoy div -->
-    <div class="border-2 border-primary-dark rounded-lg p-3">
+    <div class=" relative border-2 border-primary-dark rounded-lg p-3">
 
       <div class="flex justify-between ">
-        <div id="categoryHeading-<%=category.id%>" onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" class="flex hover:cursor-pointer font-bold text-primary-dark">
+        <div id="categoryHeading-<%=category.id%>" onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" 
+        class=" flex hover:cursor-pointer font-bold text-primary-dark">
           <%=category.name%>
           <%- include('partials/svg/dropDown',{id:category.id})%>
         </div>
-        <div class="flex gap-4">
-          <%-include('partials/svg/edit', {category})%>
-          <%-include('partials/svg/delete', {category})%>
-        </div>
+        <%-include('partials/edit/option',{category})%>
+
       </div>
       <!-- child items panel -->
       <div id="categoryId-<%=category.id%>" class="items-panel hidden">

@@ -1,0 +1,19 @@
+<div class="editMenu cursor-pointer">
+<div id="optionButtonForId-<%=category.id%>" onclick="toggleEditMenu(<%=category.id%>)">
+  <%-include('../svg/threeDot')%>
+</div>
+  <div id="optionMenuForId-<%=category.id%>" 
+  class=" menuOption hidden absolute top-5 right-4 z-50
+  p-1 
+  bg-primary-dark text-white
+  shadow-sm shadow-primary-dark
+  border border-primary-dark rounded-md ">
+    
+    <div class="flex gap-2" onclick="openEditCategoryForm('<%=category.name%>', <%=category.id%>)">
+     <%-include('../svg/edit', {category})%> Change Name
+    </div>
+    <div class="flex gap-2" onclick="openDeleteCategoryForm(<%=category.id%>, '<%= category.name%>')">
+      <%-include('../svg/delete', {category})%> Delete
+    </div>
+  </div>
+</div>

@@ -22,7 +22,27 @@ function closeMenu() {
 
 }
 
+// Edit Page Functions
+function toggleEditMenu(categoryId){
+
+  // hide all others opened menu first 
+  document.querySelectorAll('.menuOption').forEach(element=>element.classList.add('hidden'))
+  // toggle the current option menu 
+  document.querySelector(`#optionMenuForId-${categoryId}`).classList.toggle('hidden')
+
+  
+}
+// Event listener for closing the Edit options menu
+document.addEventListener('click',(e)=>{
+  document.querySelectorAll('.editMenu').forEach(menu=>{
+    if(!menu.contains(e.target)){
+  menu.querySelector('.menuOption').classList.add('hidden')
+    }
+  
+  }) 
+})
 // Select Event listener
+
 try {
   const select = document.getElementById('select-category')
 select.addEventListener('change', async(e)=>{
