@@ -30,7 +30,20 @@
 
   <!-- ********************************************** Global Components End **********************************************  -->
 
-  <%- include('partials/header')%>
+<!-- Menu icon -->
+<div class="flex justify-between items-center gap-1 ">
+  <a href="/" class="text-primary-dark  text-md"> ← Back </a>
+</div>
+
+<!-- drawer -->
+<div id="drawer" class=" border-transparent  rounded-r-lg fixed top-0 left-0 h-full w-64 bg-primary-dark/60 backdrop-blur-sm shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+  <div onclick="closeMenu()" class="text-xl font-bold text-end text-white pr-2">x</div>
+  <!-- menu heading -->
+  <h1 class="text-xl text-white font-semibold">Menu</h1>
+</div>
+
+
+
   <!--Buttons For Large Screen -->
   <div class="flex gap-2 mt-2">
     <%-include('partials/desktopButtons/addCategoryButton')%>
