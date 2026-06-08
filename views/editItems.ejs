@@ -2,10 +2,15 @@
   <% if(items.length === 0){ %>
   <h1>No items in this category</h1>
   <%}else{%>
+  <!-- Header for editing items -->
+  <div id="controls-for-cateogryId-<%=categoryId%>" class="  flex justify-end">
+    <!-- Select Button -->
+    <%-include('partials/button/select', {categoryId})%>
+  </div>
   <table class="table-fixed w-full lg:text-lg border-separate ">
     <thead>
       <tr class="bg-primary-dark text-white border-collapse">
-      <td id="table-heading-of-categoryId-<%=categoryId%>" class="hidden w-1/9" > </td>
+        <td id="table-heading-of-categoryId-<%=categoryId%>" class="hidden w-1/9"> </td>
         <td class="w-1/6 text-start">Id</td>
         <td class="w-3/4 text-start">Name</td>
         <td class="w-1/4 text-start">Price</td>
@@ -13,21 +18,21 @@
       </tr>
     </thead>
     <tbody>
-    
+
       <% items.forEach(item=>{%>
-      <tr  class="odd:bg-green-100 even: bg-white">
-      <td id="checkbox-for-itemId-<%=item.id%>" class="checkbox hidden" >
-      <input type="checkbox" name="selectBox" id="selectBoxId-<%=item.id%>">
-      </td>
-        <td >
-        <%= item.id%>
+      <tr class="odd:bg-green-100 even: bg-white">
+        <td id="checkbox-for-itemId-<%=item.id%>" class="checkbox hidden">
+          <input type="checkbox" name="selectBox" id="selectBoxId-<%=item.id%>">
+        </td>
+        <td>
+          <%= item.id%>
           <input type="hidden" name="itemId" id="itemId" value="<%=item.id%>">
         </td>
         <td class="border border-primary-dark">
-          <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="lg:text-lg w-full " type="text" name="itemName"  value="<%=item.name%>">
+          <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class="lg:text-lg w-full " type="text" name="itemName" value="<%=item.name%>">
         </td>
         <td class="border border-primary-dark">
-          <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class=" lg:text-lg w-full" type="number" name="itemPrice"  value="<%= (item.price/100).toFixed(2) %>">
+          <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class=" lg:text-lg w-full" type="number" name="itemPrice" value="<%= (item.price/100).toFixed(2) %>">
         </td>
         <td class="border border-primary-dark">
           <input data-category-id="<%=categoryId%>" data-item-id="<%=item.id%>" class=" lg:text-lg w-full" type="number" name="itemQuantity" value="<%=item.quantity%>">

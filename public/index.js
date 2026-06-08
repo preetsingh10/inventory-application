@@ -34,34 +34,6 @@ function toggleEditMenu(categoryId) {
     .querySelector(`#optionMenuForId-${categoryId}`)
     .classList.toggle("hidden");
 }
-function selectItems(categoryId) {
-  const selectButton = document.getElementById(
-    `select-button-for-categoryId-${categoryId}`,
-  );
-  const selectAllButton = document.getElementById(
-    `selectAll-for-categoryId-${categoryId}`,
-  );
-  const deleteButton = document.getElementById(
-    `delete-for-categoryId-${categoryId}`,
-  );
-  const cancelButton = document.getElementById(
-    `cancel-for-categoryId-${categoryId}`,
-  );
-  const checkboxTableHeader = document.getElementById(
-    `table-heading-of-categoryId-${categoryId}`,
-  );
-  checkboxTableHeader ? checkboxTableHeader.classList.toggle("hidden") : null;
-  const itemsDiv = document.querySelector(
-    `#items-for-categoryId-${categoryId}`,
-  );
-  itemsDiv ? itemsDiv.querySelectorAll(".checkbox").forEach((item) => item.classList.toggle("hidden"))
-    : null;
-  // toggle the buttons from hidden to visible
-  selectButton.classList.toggle("hidden");
-  selectAllButton.classList.toggle("hidden");
-  deleteButton.classList.toggle("hidden");
-  cancelButton.classList.toggle("hidden");
-}
 // Event listener for closing the Edit options menu
 document.addEventListener("click", (e) => {
   document.querySelectorAll(".editMenu").forEach((menu) => {

@@ -61,10 +61,6 @@
         <%-include('partials/edit/option',{category})%>
 
       </div>
-      <!-- Header for editing items -->
-      <div id="controls-for-cateogryId-<%=category.id%>" class=" hidden flex justify-end">
-        <%-include('partials/button/select', {categoryId:category.id})%>
-      </div>
       <!-- child items panel -->
       <div id="categoryId-<%=category.id%>" class="items-panel hidden">
 

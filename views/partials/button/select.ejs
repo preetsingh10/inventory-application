@@ -1,15 +1,19 @@
 <div class="flex gap-1">
 
-<button id="select-button-for-categoryId-<%=categoryId%>" class="border border-primary-dark rounded-full text-primary-dark  px-2" 
-onclick="selectItems(<%=categoryId%>)"
->
-Select
-</button>
-<button id="selectAll-for-categoryId-<%=categoryId%>" 
-class="border border-primary-dark rounded-full text-primary-dark  px-2" >Select All</button>
-<button id="delete-for-categoryId-<%=categoryId%>" class=" border border-primary-dark rounded-full text-primary-dark  px-2" >
-delete
-</button>
-<button id="cancel-for-categoryId-<%=categoryId%>" class="border border-primary-dark rounded-full text-primary-dark  px-2" >cancel</button>
+  <button id="select-button-for-categoryId-<%=categoryId%>" class="border border-primary-dark rounded-full text-primary-dark  px-2" onclick="selectItems(<%=categoryId%>)">
+    Select
+  </button>
+  <button id="selectAll-for-categoryId-<%=categoryId%>"
+   class=" hidden border border-primary-dark rounded-full text-primary-dark  px-2"
+   onclick="selectAll(<%categoryId%>)"
+   >Select All</button>
+  <button id="delete-for-categoryId-<%=categoryId%>" class=" hidden border border-primary-dark rounded-full text-primary-dark  px-2">
+    delete
+  </button>
+  <button
+    id="cancel-for-categoryId-<%=categoryId%>" 
+    class="hidden border border-primary-dark rounded-full text-primary-dark  px-2"
+    onclick="selectCancel(<%=categoryId%>)"
+    >cancel</button>
 
 </div>
