@@ -160,14 +160,16 @@ function selectCancel(categoryId) {
   selectAllButton.classList.toggle("hidden");
   deleteButton.classList.toggle("hidden");
   cancelButton.classList.toggle("hidden");
+
+  // unselectall the items when user clicked cancel
+  selectAll(categoryId, false)
 }
 // select All button
-function selectAll(categoryId){
-    const itemsDiv = document.querySelector(
-    `#items-for-categoryId-${categoryId}`,
-  );
-   itemsDiv ? itemsDiv .querySelectorAll(".checkbox").forEach((item) => console.log(typeof item)):null
-  
+function selectAll(categoryId, option){
+  const parentDiv = document.querySelector(`#categoryId-${categoryId}`)
+ const checkboxes =  parentDiv.querySelectorAll(`input[type="checkbox"]`)
+ checkboxes.forEach(checkbox=>checkbox.checked=option)
+ console.log('select all got clicked ')
 }
 // Delete Category Form
 function openDeleteCategoryForm(categoryId, categoryName) {
