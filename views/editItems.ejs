@@ -5,6 +5,7 @@
   <table class="table-fixed w-full lg:text-lg border-separate ">
     <thead>
       <tr class="bg-primary-dark text-white border-collapse">
+      <td id="table-heading-of-categoryId-<%=categoryId%>" class="hidden w-1/9" > </td>
         <td class="w-1/6 text-start">Id</td>
         <td class="w-3/4 text-start">Name</td>
         <td class="w-1/4 text-start">Price</td>
@@ -15,6 +16,9 @@
     
       <% items.forEach(item=>{%>
       <tr  class="odd:bg-green-100 even: bg-white">
+      <td id="checkbox-for-itemId-<%=item.id%>" class="checkbox hidden" >
+      <input type="checkbox" name="selectBox" id="selectBoxId-<%=item.id%>">
+      </td>
         <td >
         <%= item.id%>
           <input type="hidden" name="itemId" id="itemId" value="<%=item.id%>">

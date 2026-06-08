@@ -15,43 +15,72 @@ function openMenu() {
 function closeMenu() {
   document.getElementById("overlay").classList.add("hidden");
   document.getElementById("drawer").classList.add("-translate-x-full");
-  const editForm = document.querySelector('#edit-category-form-for-small-screen')
-  if(editForm){
-    editForm.classList.add("translate-y-full")
+  const editForm = document.querySelector(
+    "#edit-category-form-for-small-screen",
+  );
+  if (editForm) {
+    editForm.classList.add("translate-y-full");
   }
-
 }
 
 // Edit Page Functions
-function toggleEditMenu(categoryId){
-
-  // hide all others opened menu first 
-  document.querySelectorAll('.menuOption').forEach(element=>element.classList.add('hidden'))
-  // toggle the current option menu 
-  document.querySelector(`#optionMenuForId-${categoryId}`).classList.toggle('hidden')
-
-  
+function toggleEditMenu(categoryId) {
+  // hide all others opened menu first
+  document
+    .querySelectorAll(".menuOption")
+    .forEach((element) => element.classList.add("hidden"));
+  // toggle the current option menu
+  document
+    .querySelector(`#optionMenuForId-${categoryId}`)
+    .classList.toggle("hidden");
+}
+function selectItems(categoryId) {
+  const selectButton = document.getElementById(
+    `select-button-for-categoryId-${categoryId}`,
+  );
+  const selectAllButton = document.getElementById(
+    `selectAll-for-categoryId-${categoryId}`,
+  );
+  const deleteButton = document.getElementById(
+    `delete-for-categoryId-${categoryId}`,
+  );
+  const cancelButton = document.getElementById(
+    `cancel-for-categoryId-${categoryId}`,
+  );
+  const checkboxTableHeader = document.getElementById(
+    `table-heading-of-categoryId-${categoryId}`,
+  );
+  checkboxTableHeader ? checkboxTableHeader.classList.toggle("hidden") : null;
+  const itemsDiv = document.querySelector(
+    `#items-for-categoryId-${categoryId}`,
+  );
+  itemsDiv ? itemsDiv.querySelectorAll(".checkbox").forEach((item) => item.classList.toggle("hidden"))
+    : null;
+  // toggle the buttons from hidden to visible
+  selectButton.classList.toggle("hidden");
+  selectAllButton.classList.toggle("hidden");
+  deleteButton.classList.toggle("hidden");
+  cancelButton.classList.toggle("hidden");
 }
 // Event listener for closing the Edit options menu
-document.addEventListener('click',(e)=>{
-  document.querySelectorAll('.editMenu').forEach(menu=>{
-    if(!menu.contains(e.target)){
-  menu.querySelector('.menuOption').classList.add('hidden')
+document.addEventListener("click", (e) => {
+  document.querySelectorAll(".editMenu").forEach((menu) => {
+    if (!menu.contains(e.target)) {
+      menu.querySelector(".menuOption").classList.add("hidden");
     }
-  
-  }) 
-})
+  });
+});
 // Select Event listener
 
 try {
-  const select = document.getElementById('select-category')
-select.addEventListener('change', async(e)=>{
-  const categoryId = e.target.value
-  // showItemsFromServer(`category/${categoryId}`,'items-div')
-  window.location.href = `/category/${categoryId}`
-})
+  const select = document.getElementById("select-category");
+  select.addEventListener("change", async (e) => {
+    const categoryId = e.target.value;
+    // showItemsFromServer(`category/${categoryId}`,'items-div')
+    window.location.href = `/category/${categoryId}`;
+  });
 } catch (error) {
-  console.log(error.message) 
+  console.log(error.message);
 }
 // *********************************** Small Screen Functions ********************************************************
 
@@ -107,11 +136,11 @@ function removeAddCategoryForm() {
   const dialog = document.getElementById("add-category");
   dialog.close();
 }
-function showAddItemForm(){
-  const dialog = document.getElementById("add-item-dialog")
-  dialog.showModal()
+function showAddItemForm() {
+  const dialog = document.getElementById("add-item-dialog");
+  dialog.showModal();
 }
-function removeAddItemForm(){
-  const dialog = document.getElementById("add-item-dialog")
-  dialog.close()
+function removeAddItemForm() {
+  const dialog = document.getElementById("add-item-dialog");
+  dialog.close();
 }

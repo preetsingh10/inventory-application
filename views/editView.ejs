@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/output.css">
   <script src="/index.js" defer></script>
   <script src="/edit.js" defer></script>
-    <script src="htmx.js"></script>
+  <script src="htmx.js"></script>
 </head>
 
 <body>
@@ -30,19 +30,16 @@
 
   <!-- ********************************************** Global Components End **********************************************  -->
 
-<!-- Menu icon -->
-<div class="flex justify-between items-center gap-1 ">
-  <a href="/" class="text-primary-dark  text-md"> ← Back </a>
-</div>
+  <div class="flex justify-between items-center gap-1 ">
+    <a href="/" class="text-primary-dark  text-md"> ← Back </a>
+  </div>
 
-<!-- drawer -->
-<div id="drawer" class=" border-transparent  rounded-r-lg fixed top-0 left-0 h-full w-64 bg-primary-dark/60 backdrop-blur-sm shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
-  <div onclick="closeMenu()" class="text-xl font-bold text-end text-white pr-2">x</div>
-  <!-- menu heading -->
-  <h1 class="text-xl text-white font-semibold">Menu</h1>
-</div>
-
-
+  <!-- drawer -->
+  <div id="drawer" class=" border-transparent  rounded-r-lg fixed top-0 left-0 h-full w-64 bg-primary-dark/60 backdrop-blur-sm shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div onclick="closeMenu()" class="text-xl font-bold text-end text-white pr-2">x</div>
+    <!-- menu heading -->
+    <h1 class="text-xl text-white font-semibold">Menu</h1>
+  </div>
 
   <!--Buttons For Large Screen -->
   <div class="flex gap-2 mt-2">
@@ -57,13 +54,16 @@
     <div class=" relative border-2 border-primary-dark rounded-lg p-3">
 
       <div class="flex justify-between ">
-        <div id="categoryHeading-<%=category.id%>" onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" 
-        class=" flex hover:cursor-pointer font-bold text-primary-dark">
+        <div id="categoryHeading-<%=category.id%>" onclick="openItemsPanel('<%= category.id %>')" hx-get="category/data/<%= category.id %>" hx-trigger="click" hx-target="#categoryId-<%=category.id%>" class=" flex hover:cursor-pointer font-bold text-primary-dark">
           <%=category.name%>
           <%- include('partials/svg/dropDown',{id:category.id})%>
         </div>
         <%-include('partials/edit/option',{category})%>
 
+      </div>
+      <!-- Header for editing items -->
+      <div id="controls-for-cateogryId-<%=category.id%>" class=" hidden flex justify-end">
+        <%-include('partials/button/select', {categoryId:category.id})%>
       </div>
       <!-- child items panel -->
       <div id="categoryId-<%=category.id%>" class="items-panel hidden">

@@ -19,24 +19,23 @@ listOfCategories.addEventListener("input", (e) => {
   resetButtonForCurrentCategory.classList.remove("hidden");
 });
 
-function updateItemState(state,categoryId,itemId,itemProperty,itemValue){
-  const currentState = state.updatedItems
+function updateItemState(state, categoryId, itemId, itemProperty, itemValue) {
+  const currentState = state.updatedItems;
   const newState = {
     ...currentState,
-    [categoryId]:{
+    [categoryId]: {
       ...currentState[categoryId],
-      [itemId]:{
+      [itemId]: {
         ...currentState[categoryId]?.[itemId],
-      [itemProperty]:itemValue
-      }
-    }
-  }
-  state.updatedItems = newState 
-
+        [itemProperty]: itemValue,
+      },
+    },
+  };
+  state.updatedItems = newState;
 }
 
-function deleteCateogryFromState(categoryId){
-  delete state.updatedItems[categoryId]
+function deleteCateogryFromState(categoryId) {
+  delete state.updatedItems[categoryId];
 }
 
 async function showItemsForEditing(categoryName, categoryId) {
@@ -62,6 +61,25 @@ function openItemsPanel(id) {
   const itemsPanel = listOfCategories.querySelector(
     `#categoryId-${categoryId}`,
   );
+  const categoryControls = document.querySelector(
+    `#controls-for-cateogryId-${categoryId}`,
+  );
+   const selectAllButton = document.getElementById(
+    `selectAll-for-categoryId-${categoryId}`,
+  );
+  const deleteButton = document.getElementById(
+    `delete-for-categoryId-${categoryId}`,
+  );
+  const cancelButton = document.getElementById(
+    `cancel-for-categoryId-${categoryId}`,
+  );
+
+  // toggle select button and its sub buttons 
+  categoryControls.classList.toggle("hidden");
+  selectAllButton.classList.add("hidden")
+  deleteButton.classList.add("hidden")
+  cancelButton.classList.add("hidden")
+
   if (state.openedCategoryId.includes(categoryId)) {
     itemsPanel.classList.toggle("hidden");
     dropDownSvg.classList.toggle("rotate-180");
