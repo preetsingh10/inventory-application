@@ -58,10 +58,19 @@ async function updateItemsInDb(id, name, price, quantity) {
   try {
     await pool.query(
       "UPDATE items SET name=($1), price=($2), quantity=($3) WHERE id=($4)",
-      [name, price, quantity, id]
+      [name, price, quantity, id],
     );
   } catch (e) {
     console.log(e);
+  }
+}
+async function deleteItemsFromDb(arrOfIds) {
+  if (arrOfIds.length > 0) {
+    try {
+      await pool.query("DELETE FROM items WHERE id = ANY($1)", [arrOfIds.map(Number)]);
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 module.exports = {
@@ -74,4 +83,5 @@ module.exports = {
   updateCategoryInDb,
   deleteCategoryInDb,
   updateItemsInDb,
+  deleteItemsFromDb,
 };
