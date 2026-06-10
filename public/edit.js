@@ -15,8 +15,12 @@ listOfCategories.addEventListener("input", (e) => {
   const resetButtonForCurrentCategory = listOfCategories.querySelector(
     `#resetButtonForCategoryId-${categoryId}`,
   );
-  saveButtonForCurrentCategory.classList.remove("hidden");
-  resetButtonForCurrentCategory.classList.remove("hidden");
+  if (saveButtonForCurrentCategory) {
+    saveButtonForCurrentCategory.classList.remove("hidden");
+  }
+  if (resetButtonForCurrentCategory) {
+    resetButtonForCurrentCategory.classList.remove("hidden");
+  }
 });
 
 function updateItemState(state, categoryId, itemId, itemProperty, itemValue) {
@@ -162,14 +166,13 @@ function selectCancel(categoryId) {
   cancelButton.classList.toggle("hidden");
 
   // unselectall the items when user clicked cancel
-  selectAll(categoryId, false)
+  selectAll(categoryId, false);
 }
 // select All button
-function selectAll(categoryId, option){
-  const parentDiv = document.querySelector(`#categoryId-${categoryId}`)
- const checkboxes =  parentDiv.querySelectorAll(`input[type="checkbox"]`)
- checkboxes.forEach(checkbox=>checkbox.checked=option)
- console.log('select all got clicked ')
+function selectAll(categoryId, option) {
+  const parentDiv = document.querySelector(`#categoryId-${categoryId}`);
+  const checkboxes = parentDiv.querySelectorAll(`input[type="checkbox"]`);
+  checkboxes.forEach((checkbox) => (checkbox.checked = option));
 }
 // Delete Category Form
 function openDeleteCategoryForm(categoryId, categoryName) {

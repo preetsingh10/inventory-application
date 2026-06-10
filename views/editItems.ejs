@@ -22,7 +22,7 @@
       <% items.forEach(item=>{%>
       <tr class="odd:bg-green-100 even: bg-white">
         <td id="checkbox-for-itemId-<%=item.id%>" class="checkbox hidden">
-          <input type="checkbox" name="selectBox" id="selectBoxId-<%=item.id%>">
+          <input type="checkbox" name="checkboxId" value="<%=item.id%>" id="selectBoxId-<%=item.id%>">
         </td>
         <td>
           <%= item.id%>

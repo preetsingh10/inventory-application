@@ -6,6 +6,7 @@ const { getIndex } = require("./controllers/inventoryController");
 const {addCategory} = require('./controllers/addCategoryController')
 const {addItemController} = require('./controllers/addItemController')
 const {editController} = require('./controllers/editController')
+const {deleteItemController} = require('./controllers/deleteItemController')
 
 app.set("view engine", "ejs");
 
@@ -24,6 +25,8 @@ app.post('/addCategory', addCategory)
 
 // add Item request Handler
 app.post('/addItem', addItemController)
+
+app.post('/deleteitems', deleteItemController)
 
 // edit page
 app.get('/edit', editController)

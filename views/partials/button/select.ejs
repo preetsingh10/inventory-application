@@ -7,7 +7,13 @@
    class=" hidden border border-primary-dark rounded-full text-primary-dark  px-2"
    onclick="selectAll(<%=categoryId%>, true)"
    >Select All</button>
-  <button id="delete-for-categoryId-<%=categoryId%>" class=" hidden border border-primary-dark rounded-full text-primary-dark  px-2">
+  <button id="delete-for-categoryId-<%=categoryId%>" 
+  class=" hidden border border-primary-dark rounded-full text-primary-dark  px-2"
+  hx-post="/deleteitems"
+  hx-include='#categoryId-<%=categoryId%> input[type="checkbox"]'
+  hx-vals='{"categoryId": <%=categoryId%>}'
+  hx-target="#categoryId-<%=categoryId%>"
+  >
     delete
   </button>
   <button
